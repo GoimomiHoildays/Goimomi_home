@@ -1,0 +1,221 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — Goimomi Holidays</title>
+  <meta name="description" content="Official Privacy Policy for Goimomi Holidays, detailing data protection and cookie usage." />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Brand color (nav) requested by user */
+    :root {
+      --goimomi-green: #0F5D3F; /* NAV BAR COLOR - user requested */
+      --goimomi-blue: #172a5a;  /* supporting brand color */
+      --muted: #6b7280;         /* gray-500 like */
+    }
+
+    /* small, readable type scale and serif for headings */
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; color: var(--goimomi-blue); }
+    .policy-text { line-height: 1.75; color: #374151; } /* gray-700 */
+    .brand { color: var(--goimomi-green); font-weight: 700; letter-spacing: -0.2px; }
+
+    /* subtle horizontal rule */
+    .section-divider { height: 1px; background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03)); margin: 1.25rem 0; border-radius: 2px; }
+
+    /* accessible focus for interactive elements */
+    :focus { outline: 3px solid rgba(15,93,63,0.14); outline-offset: 3px; }
+
+    /* mobile nav animation */
+    .nav-panel { transition: max-height .28s ease-in-out; overflow: hidden; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- Skip link for keyboard users -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white px-3 py-2 rounded shadow">Skip to content</a>
+
+   <!-- Navigation Bar -->
+    <nav class="bg-[#0F5D3F] text-white shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'goimomi.png' %}" alt="Goimomi Holidays" class="h-15">
+          </a>
+        </div>
+    </nav>
+
+      
+        <!-- Mobile menu toggle -->
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" aria-controls="mobileNav" aria-expanded="false" class="p-2 rounded-md text-gray-700 hover:bg-gray-100" title="Toggle menu">
+            <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile nav panel -->
+      <div id="mobileNav" class="nav-panel md:hidden max-h-0">
+        <div class="flex flex-col gap-2 pb-4">
+          <a href="/" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Home</a>
+          <a href="/about" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About</a>
+          <a href="/privacy" class="block px-3 py-2 rounded-md text-[color:var(--goimomi-green)] bg-[color:var(--goimomi-green)]/5 rounded">Privacy</a>
+          <a href="/contact" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Contact</a>
+          <a href="/packages" class="block px-3 py-2 rounded-md border border-[color:var(--goimomi-green)] text-[color:var(--goimomi-green)] text-center font-semibold hover:bg-[color:var(--goimomi-green)] hover:text-white transition">Packages</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="max-w-7xl mx-auto px-6 py-12">
+    <article class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-lg">
+      <header class="mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center">Privacy Policy</h1>
+        <p class="text-center text-sm text-gray-500 mt-2">Last Updated: <time datetime="2025-11">November 2025</time></p>
+      </header>
+
+      <!-- quick toc -->
+      <div class="mb-6">
+        <nav aria-label="Table of contents" class="text-sm text-[color:var(--muted)]">
+          <strong class="text-gray-700">On this page:</strong>
+          <ul class="flex flex-wrap gap-3 mt-2">
+            <li><a href="#commitment" class="hover:underline">Our Commitment</a></li>
+            <li><a href="#security" class="hover:underline">Security</a></li>
+            <li><a href="#info-we-collect" class="hover:underline">Information We Collect</a></li>
+            <li><a href="#cookies" class="hover:underline">Cookie Policy</a></li>
+            <li><a href="#manage-cookies" class="hover:underline">Managing Cookies</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="policy-text space-y-6 mt-4">
+
+        <section id="commitment">
+          <h2 class="text-2xl font-bold mt-2">Our Commitment to Privacy</h2>
+          <p>We respect and are committed to protecting your privacy. We will not publish, sell, or rent your personal data to third parties without your explicit consent. The practices described in this policy apply to data collected by Goimomi Holidays across our domain and subdomains.</p>
+          <p>By using our site, you agree to the terms of this policy. If you disagree, please discontinue use of the website. This policy forms part of our User Agreement and is effective upon your first use of the site.</p>
+
+          <blockquote class="mt-3 border-l-4 border-yellow-400 pl-4 py-2 bg-yellow-50 text-gray-700 italic">
+            This policy does not cover third-party sites that we link to. Please review their privacy policies before providing personal information to them.
+          </blockquote>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section id="security">
+          <h2 class="text-2xl font-bold">Privacy Guarantee & Data Security</h2>
+          <p>We do not sell or rent personal information to third parties for marketing without explicit consent.</p>
+          <p>From time to time we may publish aggregated, non-identifiable statistics about site usage (for example, total visitors or most popular packages).</p>
+          <p>Access to personal information is restricted to employees and contractors who need it to perform their duties. Violations of our privacy policy may result in disciplinary action, up to termination and potential legal action.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section id="info-we-collect">
+          <h2 class="text-2xl font-bold">Information We Collect</h2>
+          <p>The personal information we collect is used primarily to process orders and to deliver and improve our services. This policy applies to data you provide through any of our channels and media unless stated otherwise.</p>
+
+          <h3 class="text-xl font-semibold mt-4">Security Measures</h3>
+          <p>We use appropriate physical, electronic, and managerial procedures to safeguard the information we collect online. These measures are continuously reviewed and updated as industry standards evolve.</p>
+
+          <h3 class="text-xl font-semibold mt-4">Use of IP Address</h3>
+          <p>We use IP addresses to facilitate server diagnostics, administer the website, and collect aggregate demographic information. You acknowledge providing such data voluntarily while using our services.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section id="cookies">
+          <h2 class="text-2xl font-bold">Cookie Policy</h2>
+          <p>We are committed to transparency about how we use cookies on our website. Cookies help deliver a more efficient and personalized browsing experience.</p>
+
+          <h3 class="text-xl font-semibold mt-4">What is a Cookie?</h3>
+          <p>A cookie is a small text file stored on your device by the browser. Cookies can remember preferences, session state, and other useful information to enhance your experience.</p>
+
+          <ul class="list-disc list-inside space-y-2 ml-4 mt-3">
+            <li><strong>Session Cookies:</strong> temporary cookies erased when you close your browser.</li>
+            <li><strong>Persistent Cookies:</strong> stored for a set time to help us analyze usage patterns and improve our services.</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mt-4">Cookie Categories</h3>
+          <dl class="mt-3 space-y-3">
+            <div>
+              <dt class="font-bold">Essential</dt>
+              <dd class="ml-6 text-sm">Required for core website functions, such as session management and shopping cart contents.</dd>
+            </div>
+
+            <div>
+              <dt class="font-bold mt-2">Functional</dt>
+              <dd class="ml-6 text-sm">Remember user preferences and improve site usability.</dd>
+            </div>
+
+            <div>
+              <dt class="font-bold mt-2">Analytics</dt>
+              <dd class="ml-6 text-sm">Used to measure performance and gather anonymized usage data (e.g., Google Analytics). See Google's partners privacy info: <a href="https://www.google.com/policies/privacy/partners" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">google.com/policies/privacy/partners</a>.</dd>
+            </div>
+
+            <div>
+              <dt class="font-bold mt-2">Advertising</dt>
+              <dd class="ml-6 text-sm">Used by us and trusted partners to provide relevant ads. We limit third-party cookies to reputable partners only.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section id="manage-cookies">
+          <h2 class="text-2xl font-bold">Managing Cookies</h2>
+          <p>To manage or delete cookies, please change settings in your browser. Most browsers allow you to block or delete cookies via Settings &gt; Privacy &amp; Security. You may also use browser extensions to control cookies more granularly.</p>
+          <p>If you have questions about our privacy practices or want to request deletion of personal data, contact us at <a href="mailto:privacy@goimomi.example" class="text-[color:var(--goimomi-green)] hover:underline">privacy@goimomi.example</a>.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-gray-100 border-t mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-6 md:flex md:items-center md:justify-between">
+      <div class="text-sm text-gray-600">&copy; <span id="year"></span> Goimomi Holidays. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    (function () {
+      const btn = document.getElementById('mobileMenuBtn');
+      const panel = document.getElementById('mobileNav');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (!expanded) {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          panel.style.maxHeight = '0';
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+
+      // Ensure nav height resets on resize
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          panel.style.maxHeight = null;
+        } else if (btn.getAttribute('aria-expanded') === 'true') {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
