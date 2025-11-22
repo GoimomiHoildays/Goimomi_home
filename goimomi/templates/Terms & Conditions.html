@@ -1,0 +1,170 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terms & Conditions — Goimomi Holidays</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --brand: #0F5D3F; }
+    /* small helper for readable long text */
+    .prose-custom{ max-width: 78ch; margin: 0 auto; }
+    /* subtle drop shadow for header */
+    .site-header{ box-shadow: 0 6px 18px rgba(15,93,63,0.08); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+   <!-- Navigation Bar -->
+   <nav class="bg-[#0F5D3F] text-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'goimomi.png' %}" alt="Goimomi Holidays" class="h-15">
+      </a>
+    </div>
+   </nav>
+
+        <div class="flex items-center gap-3">
+          <!-- Mobile menu button -->
+          <button id="menuBtn" aria-label="Open menu" class="md:hidden p-2">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-gray-700"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t">
+      <div class="px-4 py-3 space-y-2">
+        <a href="#terms" class="block">Terms</a>
+        <a href="#cancellation" class="block">Cancellation</a>
+        <a href="#payment" class="block">Payments</a>
+        <a href="#contact" class="block">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Title -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Content -->
+      <article class="md:col-span-3 bg-white p-8 rounded-2xl shadow-sm text-center mx-auto">
+        <header class="mb-6">
+          <h1 id="terms" class="text-2xl sm:text-3xl font-extrabold">Terms &amp; Conditions</h1>
+          <p class="mt-2 text-sm text-gray-600">Last updated: <strong>November 18, 2025</strong></p>
+        </header>
+
+        <section class="prose prose-custom text-gray-700 text-left mx-auto">
+          <!-- Introduction -->
+          <p>Thank you for accessing and shopping at <strong>Goimomi Holidays</strong>. By using this site you accept these Terms &amp; Conditions unconditionally. We may update these Terms periodically and your continued use of the site after posting constitutes acceptance of the updated Terms.</p>
+
+          <!-- Eligibility -->
+          <h2>Eligibility to use our site</h2>
+          <p>Use of the Site is available only to persons who can legally enter into contracts under applicable law. Persons who are "incompetent to contract" (as per the Indian Contract Act, 1872), including un-discharged insolvents, are not eligible. We reserve the right to terminate access if we discover a user is under 18 years of age or otherwise ineligible.</p>
+
+          <!-- Membership -->
+          <h2>Membership</h2>
+          <p>Creating an account is optional — you may checkout as a guest. If you register, you agree to provide accurate, current and complete information. We reserve the right to revoke or terminate registrations for any reason and at our sole discretion.</p>
+
+          <!-- Electronic communications -->
+          <h2>Electronic communications</h2>
+          <p>By interacting with the Site or sending electronic communications, you consent to receive communications from us electronically.</p>
+
+          <!-- Reviews -->
+          <h2>Reviews, feedback and submissions</h2>
+          <p>All comments, reviews, suggestions and other submissions you make ("Comments") become the property of Goimomi Holidays. By submitting, you assign all worldwide rights and we may use, reproduce, modify and publish those Comments without compensation or obligation to you. You warrant that your Comments do not violate any third-party rights and will not contain unlawful or harmful content.</p>
+
+          <!-- Accuracy -->
+          <h2>Accuracy of content &amp; product information</h2>
+          <p>We strive for accuracy but typographical errors may occur. If a product is listed at an incorrect price or with incorrect information, we reserve the right to modify the price or refuse/cancel orders placed for that product unless the product has already been dispatched.</p>
+
+          <!-- Payment -->
+          <h2 id="payment">Mode of payment</h2>
+          <p>Overseas advance payments may be made via wire transfer. By providing card details and accepting these Terms, you authorize us to debit the nominated card in accordance with applicable agreements. Currency conversion fees may apply. Credit cards are required to secure bookings made within 14 days of travel.</p>
+
+          <h3>Payment gateway fees</h3>
+          <p>Any payment gateway charges applied at checkout are non-refundable.</p>
+
+          <!-- Outstanding -->
+          <h2>Outstanding</h2>
+          <p>If payments remain outstanding after reminders, Goimomi Holidays reserves rights to recover dues by withholding future services (for example, flown tickets).</p>
+
+          <!-- Cancellation -->
+          <h2 id="cancellation">Cancellation policy</h2>
+          <p>All cancellations must be notified in writing. Cancellation charges apply from the date we receive written notice, according to the following:</p>
+          <ul>
+            <li>45 days prior to departure: 10% of the ticket cost</li>
+            <li>15 days prior to departure: 25% of the ticket cost</li>
+            <li>72 hours prior to departure: No refund</li>
+          </ul>
+          <p>Cancellation within 12 hours of scheduled departure must be handled directly with the airline. Cancellations submitted on Sundays will be processed on the next working day. During festival days certain payments may be non-refundable. No refunds will be provided for cancellations after trip commencement.</p>
+
+          <h3>Airline cancellation policy</h3>
+          <p>Airline fares are governed by the airline's fare rules. Most airfares are non-refundable and non-transferable and airlines may charge partial or full cancellation fees. We will help wherever possible within those rules.</p>
+
+          <h3>Additional cancellation &amp; amendment conditions</h3>
+          <p>Certain suppliers (air, car, hotel, tour) may apply additional cancellation penalties or amendment fees; such terms will be clearly advised at time of booking and are displayed on the relevant product page.</p>
+
+          <!-- Liabilities -->
+          <h2>Our liabilities &amp; limitations</h2>
+          <p>If ticket costs or taxes increase due to government changes after booking, such increases will be charged additionally. We act as an agent for airlines and other suppliers; all contracts, tickets and receipts issued are subject to the terms of those suppliers. Itineraries are samples and subject to change due to weather, road conditions, participant ability, or other factors beyond our control. We are not responsible for damages or compensation claims arising from such changes beyond our control.</p>
+
+          <!-- Travel insurance -->
+          <h2>Travel insurance</h2>
+          <p>We strongly recommend comprehensive travel insurance covering medical expenses, cancellation, personal injury, loss/theft of luggage and personal belongings. Please ensure the policy meets your individual needs.</p>
+
+          <!-- Indemnity -->
+          <h2>Indemnity</h2>
+          <p>You agree to indemnify and hold Goimomi Holidays and its officers, directors, employees and agents harmless against any claims, liabilities, damages and expenses arising from your use of the Site or your breach of these Terms.</p>
+
+          <!-- Governing law -->
+          <h2>Governing law and jurisdiction</h2>
+          <p>These Terms are governed by the laws of India. Disputes shall be subject to the exclusive jurisdiction of the courts in Mumbai, India.</p>
+
+          <!-- Termination -->
+          <h2>Termination</h2>
+          <p>We may suspend or terminate your access to the Site without notice if we believe you have breached these Terms or your conduct is harmful to others.</p>
+
+          <!-- Contact -->
+          <h2 id="contact">Contact information</h2>
+          <p>If you have questions about these Terms, please contact us:</p>
+          <address>
+            Email: <a href="mailto:hello@goimomi.com" class="text-gray-700 underline">hello@goimomi.com</a><br>
+            Phone: +91 6382220393 <br>
+            Address: 5, Ground Floor, Crescent Park Apartment, Hazrath Sulaiman Street, Kaja Nagar, Trichy 620020, Tamil Nadu.
+          </address>
+        </section>
+      </article>
+
+      <!-- Right column: Quick links & TOC -->
+      <aside class="hidden md:block">
+        <div class="sticky top-24">
+
+            </nav>
+          </div>
+
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="font-semibold" style="color:var(--brand)">Goimomi Holidays</p>
+        <p class="text-sm text-gray-600">&copy; <span id="year"></span> Goimomi Holidays. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
+  </script>
+</body>
+</html>

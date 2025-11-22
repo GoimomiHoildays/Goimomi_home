@@ -1,0 +1,35 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Success — Goimomi Holidays</title>
+  <meta name="description" content="Thank you for contacting Goimomi Holidays" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root { --brand: #0F5D3F; }
+    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(6px); }
+    .focus-ring:focus { outline: 3px solid rgba(15,93,63,0.18); outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white text-gray-800 antialiased selection:bg-[var(--brand)] selection:text-white">
+
+  <!-- NAV / HEADER -->
+  <nav class="bg-[#0F5D3F] text-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'goimomi.png' %}" alt="Goimomi Holidays" class="h-15">
+      </a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 text-center">
+    <h1 class="text-4xl font-extrabold">Thank You!</h1>
+    <p class="mt-4 text-gray-600">Your message has been sent successfully. We'll get back to you within one business day.</p>
+    <a href="{% url 'home' %}" class="mt-6 inline-block px-5 py-3 bg-[var(--brand)] text-white rounded-lg shadow hover:brightness-105 transition">Back to Home</a>
+  </main>
+
+</body>
+</html>

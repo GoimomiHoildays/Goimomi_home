@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goimomi Holidays</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+
+    <style>
+        /* Custom Colors based on screenshots */
+        .bg-goimomi-dark { background-color: #0b1a3d; }
+        .bg-goimomi-primary { background-color: #0F5D3F; } /* From top bar */
+        .text-goimomi-primary { color: #0b1a3d; }
+        .text-goimomi-gold { color: #e9b343; }
+        .heading-font { font-family: Georgia, serif; }
+
+        /* Custom shadow for cards to match the look */
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03); }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'goimomi-dark': '#0b1a3d',
+                        'goimomi-primary':'#0F5D3F',
+                        'goimomi-gold': '#e9b343',
+                        'goimomi-light': '#f8f9fa',
+                    },
+                    maxWidth: {
+                        '8xl': '88rem',
+                        '10xl': '100rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-slate-800 antialiased leading-relaxed">
+
+    <div class="w-full">
+        <div class="bg-goimomi-primary text-white text-sm hidden md:block">
+            <div class="max-w-10xl mx-auto flex items-center justify-between px-4 py-2">
+                <div class="flex items-center gap-6">
+                    <span class="flex items-center gap-2"><span>📞</span> +91 638 222 0393</span>
+                    <span class="flex items-center gap-2"><span>✉️</span> hello@goimomi.com</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span>24/7 Customer Support Available</span>
+                    <a href="https://b2b.goimomi.com/auth/login" class="bg-white text-goimomi-primary rounded-full px-3 py-1 font-medium">Agent Login</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-b sticky top-0 bg-white z-50">
+            <div class="max-w-8xl mx-auto flex items-center justify-between px-4 py-3">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'goimomi.png' %}" alt="Goimomi Holidays" class="h-16">
+                  </a>
+                <nav class="hidden lg:flex items-center gap-6 text-slate-800">
+                    <a href="http://booking.goimomi.com" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-airplane-engines" viewBox="0 0 16 16"><path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.35 4.35 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0M7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1s.458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7z"/></svg>
+                        <span class="font-medium">Flights</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16"><path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zM2 11h1v1H2zm2 0h1v1H4zm-1 2v1H2v-1zm1 0h1v1H4zm9-10v1h-1V3zM8 5h1v1H8zm1 2v1H8V7zM8 9h1v1H8zm2 0h1v1h-1zm-1 2v1H8v-1zm1 0h1v1h-1zm3-2v1h-1V9zm-1 2h1v1h-1zm-2-4h1v1h-1zm3 0v1h-1V7zm-2-2v1h-1V5zm1 0h1v1h-1z"/></svg>
+                        <span class="font-medium">Hotels</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-passport-fill" viewBox="0 0 16 16"><path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/><path d="M2 3.252a1.5 1.5 0 0 1 1.232-1.476l8-1.454A1.5 1.5 0 0 1 13 1.797v.47A2 2 0 0 1 14 4v10a2 2 0 0 1-2 2H4a2 2 0 0 1-1.51-.688 1.5 1.5 0 0 1-.49-1.11V3.253ZM5 8a3 3 0 1 0 6 0 3 3 0 0 0-6 0m0 4.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5"/></svg>
+                        <span class="font-medium">Visa</span>
+                    </a>
+                  
+                    <div class="relative group">
+                        <button type="button" aria-haspopup="true" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sun" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/><path d="M8 0a.5.5 0 0 1 .5.5V2A.5.5 0 0 1 8 2V.5A.5.5 0 0 1 8 0zM8 14a.5.5 0 0 1 .5.5V15.5a.5.5 0 0 1-1 0V14.5A.5.5 0 0 1 8 14zM2.05 2.05a.5.5 0 0 1 .707 0L3.88 3.27A.5.5 0 0 1 3.27 3.88L2.05 2.66a.5.5 0 0 1 0-.707zM12.12 12.12a.5.5 0 0 1 .707 0l1.121 1.121a.5.5 0 1 1-.707.707L12.12 12.83a.5.5 0 0 1 0-.707zM0 8a.5.5 0 0 1 .5-.5H2A.5.5 0 0 1 2 8H.5A.5.5 0 0 1 0 8zM14 8a.5.5 0 0 1 .5-.5H15.5a.5.5 0 0 1 0 1H14.5A.5.5 0 0 1 14 8zM2.05 13.95a.5.5 0 0 1 0-.707L3.27 12.12a.5.5 0 0 1 .61.61L2.76 13.95a.5.5 0 0 1-.707 0zM12.12 3.88a.5.5 0 0 1 0-.707l1.121-1.121a.5.5 0 1 1 .707.707L12.83 3.88a.5.5 0 0 1-.707 0z"/></svg>
+                            <span class="font-medium flex items-center gap-1">
+                                Holidays
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.205l3.71-3.974a.75.75 0 1 1 1.08 1.04l-4.24 4.54a.75.75 0 0 1-1.08 0l-4.24-4.54a.75.75 0 0 1 .02-1.06z" clip-rule="evenodd"/></svg>
+                            </span>
+                        </button>
+                        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-56 rounded-xl border border-slate-100 bg-white text-slate-700 shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition">
+                            <a href="#" class="block px-4 py-2 text-left text-xs font-semibold hover:bg-goimomi-light">Domestic</a>
+                            <a href="#" class="block px-4 py-2 text-left text-xs font-semibold hover:bg-goimomi-light">International</a>
+                            <a href="{% url 'customized_holidays' %}" class="block px-4 py-2 text-left text-xs font-semibold hover:bg-goimomi-light">Customized Holidays</a>
+                            <a href="#" class="block px-4 py-2 text-left text-xs font-semibold hover:bg-goimomi-light">Umrah Package</a>
+                            <a href="{% url 'customized_umrah' %}" class="block px-4 py-2 text-left text-xs font-semibold hover:bg-goimomi-light">Customized Umrah</a>
+                        </div>
+                    </div>
+                    <a href="#" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-taxi-front-fill" viewBox="0 0 16 16"><path d="M6 1a1 1 0 0 0-1 1v1h-.181A2.5 2.5 0 0 0 2.52 4.515l-.792 1.848a.8.8 0 0 1-.38.404c-.5.25-.855.715-.965 1.262L.05 9.708a2.5 2.5 0 0 0-.049.49v.413c0 .814.39 1.543 1 1.997V14.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1.338c1.292.048 2.745.088 4 .088s2.708-.04 4-.088V14.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1.892c.61-.454 1-1.183 1-1.997v-.413q0-.248-.049-.49l-.335-1.68a1.8 1.8 0 0 0-.964-1.261.8.8 0 0 1-.381-.404l-.792-1.848A2.5 2.5 0 0 0 11.181 3H11V2a1 1 0 0 0-1-1zM4.309 4h7.382a.5.5 0 0 1 .447.276l.956 1.913a.51.51 0 0 1-.497.731c-.91-.073-3.35-.17-4.597-.17s-3.688.097-4.597.17a.51.51 0 0 1-.497-.731l.956-1.913A.5.5 0 0 1 4.309 4M4 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-9 0a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1"/></svg>
+                        <span class="font-medium">Cab Booking</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20"height="20" fill="currentColor" class="bi bi-ship" viewBox="0 0 16 16"><path d="M8.146 2.792a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L9 4.207V7.5a.5.5 0 0 1-1 0V4.207L6.854 5.5a.5.5 0 1 1-.708-.708z" /><path d="M3.5 7h9l1 3H2.5l1-3z" /><path d="M1.5 11h13l-1.5 4h-10L1.5 11z" /></svg>
+                        <span class="font-medium">Cruise Bookings</span>
+                    </a>
+                    <a href="{% url 'contact' %}" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></svg>
+                        <span class="font-medium">Contact Us</span>
+                    </a>
+                    <a href="{% url 'about' %}" class="flex flex-col items-center justify-center text-xs hover:text-goimomi-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></svg>
+                        <span class="font-medium">About Us</span>
+                    </a>
+                </nav>
+                <button class="lg:hidden p-2 rounded-lg bg-gray-100" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+<main>
+
+<!-- Carousel start -->
+<section class="relative h-[60vh] overflow-hidden" aria-roledescription="carousel" id="hero-carousel">
+  <div id="slides" class="relative w-full h-full">
+    <!-- Slides will be injected by JS -->
+  </div>
+
+  <!-- Dynamic Overlay content (stays on top of slides) -->
+  <div id="overlayWrap" class="absolute inset-0 pointer-events-none z-30 flex items-center justify-center">
+    <div id="overlay" class="max-w-4xl mx-auto text-center p-6 pointer-events-auto transition-opacity duration-500 ease-in-out bg-white/40 backdrop-blur-[1px] rounded-lg">
+      <!-- Overlay content injected by JS -->
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-white transition" aria-label="Previous slide">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+  </button>
+  <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/70 rounded-full shadow-lg hover:bg-white transition" aria-label="Next slide">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+  </button>
+
+  <!-- Dots -->
+  <div id="dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
+</section>
+
+<!-- Carousel JS -->
+<script>
+(function () {
+  // List image filenames in your static folder (update names as needed)
+  const images = [
+    "{% static 'sunset.png' %}",     // slide 0
+    "{% static 'bluesea.png' %}",    // slide 1
+    "{% static 'old.png' %}",        // slide 2
+    "{% static 'stone.png' %}",      // slide 3
+    // If you have more image files add them here
+  ];
+
+  // Corresponding overlay content for each slide (must match images length)
+  const overlays = [
+    {
+      title: "Relax on Golden Beaches",
+      subtitle: "Experience the world with Goimomi Holidays. Your trusted travel partner for unforgettable journeys.",
+    },
+    {
+      title: "Sail into the Sunset",
+      subtitle: "Luxury cruises and scenic voyages designed for comfort and discovery.",
+    },
+    {
+      title: "Discover Ancient Streets",
+      subtitle: "Historic tours and cultural experiences to bring the past alive.",
+    },
+    {
+      title: "Rocky Coastal Adventures",
+      subtitle: "Adventure packages for explorers who love dramatic landscapes.",
+    }
+  ];
+
+  // Basic sanity: if overlays length doesn't match images, fill remaining with default content
+  while (overlays.length < images.length) {
+    overlays.push({
+      title: "Explore with Goimomi",
+      subtitle: "Create unforgettable memories with our curated travel packages.",
+      ctaText: "Learn More",
+      ctaHref: "#"
+    });
+  }
+
+  const slidesContainer = document.getElementById('slides');
+  const dotsContainer = document.getElementById('dots');
+  const overlayEl = document.getElementById('overlay');
+
+  let current = 0;
+  let isAnimating = false;
+  const duration = 600; // transition duration in ms
+  let autoPlayInterval = null;
+  const autoPlayDelay = 5000; // ms, set to null or 0 to disable autoplay
+
+  // Create slides (absolute stacked) with transition classes
+  images.forEach((src, idx) => {
+    const slide = document.createElement('div');
+    slide.className = 'absolute inset-0 w-full h-full transition-all duration-500 ease-in-out';
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', `Slide ${idx + 1} of ${images.length}`);
+
+    // image element
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Slide ${idx + 1}`;
+    img.className = 'w-full h-full object-cover';
+
+    // initial visibility
+    if (idx === 0) {
+      slide.style.opacity = '1';
+      slide.style.transform = 'translateX(0)';
+      slide.style.zIndex = '10';
+    } else {
+      slide.style.opacity = '0';
+      slide.style.transform = 'translateX(10%)';
+      slide.style.zIndex = '5';
+    }
+
+    slide.appendChild(img);
+    slidesContainer.appendChild(slide);
+
+    // dot
+    const dot = document.createElement('button');
+    dot.className = 'w-3 h-3 rounded-full bg-white/60 hover:bg-white ring-0 focus:outline-none';
+    dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+    dot.addEventListener('click', () => {
+      stopAutoPlay();
+      goTo(idx);
+      startAutoPlay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const slides = Array.from(slidesContainer.children);
+  const dots = Array.from(dotsContainer.children);
+
+  // set overlay markup for index
+  function renderOverlay(index) {
+    const data = overlays[index] || {};
+    // fade-out current content, then replace and fade-in
+    overlayEl.style.opacity = '0';
+    // small timeout to allow CSS transition to start (match transition duration-ish)
+    setTimeout(() => {
+      overlayEl.innerHTML = `
+        <h1 class="text-4xl md:text-6xl heading-font font-bold text-goimomi-dark">${data.title || ''}</h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-700">${data.subtitle || ''}</p>
+        ${data.ctaText ? `<div class="mt-6"><a href="${data.ctaHref || '#'}" class="inline-block px-5 py-3 rounded-2xl border border-transparent shadow-sm hover:shadow-md hover:underline">${data.ctaText}</a></div>` : ''}
+      `;
+      // small delay to smoothly fade in
+      requestAnimationFrame(() => {
+        overlayEl.style.opacity = '1';
+      });
+    }, 160);
+  }
+
+  // update dot active state
+  function updateDots() {
+    dots.forEach((d, i) => {
+      if (i === current) {
+        d.classList.add('scale-110', 'bg-white');
+        d.classList.remove('bg-white/60');
+        d.style.transform = 'scale(1.15)';
+      } else {
+        d.classList.remove('scale-110', 'bg-white');
+        d.classList.add('bg-white/60');
+        d.style.transform = 'scale(1)';
+      }
+    });
+  }
+
+  // perform animated transition
+  function show(nextIndex, dir = 1) {
+    if (isAnimating || nextIndex === current) return;
+    isAnimating = true;
+
+    const from = slides[current];
+    const to = slides[nextIndex];
+
+    // prepare 'to' slide
+    to.style.transition = `none`;
+    to.style.opacity = '0';
+    to.style.transform = `translateX(${dir * 10}%)`;
+    to.style.zIndex = '15';
+
+    // update overlay content for 'to' (fade overlay slightly to indicate change)
+    // we start overlay fade slightly earlier for smooth feel
+    overlayEl.style.transition = `opacity ${duration / 2}ms ease`;
+    overlayEl.style.opacity = '0';
+
+    // force reflow then animate
+    requestAnimationFrame(() => {
+      from.style.transition = `all ${duration}ms ease`;
+      to.style.transition = `all ${duration}ms ease`;
+
+      from.style.opacity = '0';
+      from.style.transform = `translateX(${-dir * 10}%)`;
+      from.style.zIndex = '5';
+
+      to.style.opacity = '1';
+      to.style.transform = 'translateX(0)';
+      to.style.zIndex = '10';
+
+      // finish
+      setTimeout(() => {
+        from.style.zIndex = '5';
+        isAnimating = false;
+        current = nextIndex;
+        updateDots();
+        // render overlay for the new slide (fade-in inside renderOverlay)
+        renderOverlay(current);
+      }, duration + 20);
+    });
+  }
+
+  function next() {
+    const nextIndex = (current + 1) % slides.length;
+    show(nextIndex, 1);
+  }
+  function prev() {
+    const nextIndex = (current - 1 + slides.length) % slides.length;
+    show(nextIndex, -1);
+  }
+  function goTo(i) {
+    const dir = i > current ? 1 : -1;
+    show(i, dir);
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    stopAutoPlay();
+    next();
+    startAutoPlay();
+  });
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    stopAutoPlay();
+    prev();
+    startAutoPlay();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { stopAutoPlay(); next(); startAutoPlay(); }
+    if (e.key === 'ArrowLeft')  { stopAutoPlay(); prev(); startAutoPlay(); }
+  });
+
+  // Autoplay
+  function startAutoPlay() {
+    if (!autoPlayDelay) return;
+    stopAutoPlay();
+    autoPlayInterval = setInterval(next, autoPlayDelay);
+  }
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+    }
+  }
+
+  // Initialize
+  updateDots();
+  renderOverlay(current);
+  startAutoPlay();
+
+  // Pause autoplay on hover/focus
+  const carouselEl = document.getElementById('hero-carousel');
+  carouselEl.addEventListener('mouseenter', stopAutoPlay);
+  carouselEl.addEventListener('mouseleave', startAutoPlay);
+  carouselEl.addEventListener('focusin', stopAutoPlay);
+  carouselEl.addEventListener('focusout', startAutoPlay);
+
+})();
+</script>
+<!-- Carousel end -->
+
+
+        <section class="max-w-8xl mx-auto px-6 py-16">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl heading-font font-bold text-goimomi-dark">Popular Destinations</h2>
+                <p class="text-lg text-gray-600 mt-2">Discover amazing places around the world</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100">
+                    <div class="relative h-64">
+                        <img src="{% static 'Maldives.png' %}" alt="Maldives water bungalow" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 text-white">
+                            <h3 class="text-xl font-bold">Maldives Luxury Escape</h3>
+                            <p class="text-sm flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M9 14.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5zM2 2a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM3 3h10v12H3z"/></svg>
+                                5 Days
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <p class="text-sm text-gray-600 line-clamp-3">Experience unparalleled luxury and breathtaking natural beauty in the Maldives with pristine beaches and crystal-clear waters.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-sm text-gray-500">Starting from <br><span class="text-2xl font-bold text-goimomi-dark">₹29,500</span></div>
+                            <a href="#" class="bg-goimomi-dark text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-goimomi-primary transition">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100">
+                    <div class="relative h-64">
+                        <img src="{% static 'Dubai Safari.png' %}" alt="Dubai skyline at night" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 text-white">
+                            <h3 class="text-xl font-bold">Dubai Desert & City Adventure</h3>
+                            <p class="text-sm flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M9 14.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5zM2 2a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM3 3h10v12H3z"/></svg>
+                                6 Days
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <p class="text-sm text-gray-600 line-clamp-3">Discover the dazzling modernity of Dubai combined with thrilling desert adventures and rich cultural experiences.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-sm text-gray-500">Starting from <br><span class="text-2xl font-bold text-goimomi-dark">₹35,000</span></div>
+                            <a href="#" class="bg-goimomi-dark text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-goimomi-primary transition">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100">
+                    <div class="relative h-64">
+                        <img src="{% static 'Singapore.png' %}" alt="Singapore Gardens by the Bay" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 text-white">
+                            <h3 class="text-xl font-bold">Singapore City & Island Getaway</h3>
+                            <p class="text-sm flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M9 14.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5zM2 2a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM3 3h10v12H3z"/></svg>
+                                4 Days
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <p class="text-sm text-gray-600 line-clamp-3">Explore the vibrant cityscape, lush gardens, and exciting attractions of Singapore, a perfect blend of urban and nature.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-sm text-gray-500">Starting from <br><span class="text-2xl font-bold text-goimomi-dark">₹30,000</span></div>
+                            <a href="#" class="bg-goimomi-dark text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-goimomi-primary transition">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-8xl mx-auto px-6 py-16 bg-goimomi-light">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl heading-font font-bold text-goimomi-dark">Special Offers</h2>
+                <p class="text-lg text-gray-600 mt-2">Limited time deals you don't want to miss</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-shadow">
+                    <div class="relative h-64">
+                        <img src="{% static 'Dubai.png' %}" alt="Couple watching sunset over Dubai skyline" class="w-full h-full object-cover" />
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">15% OFF</span>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <h3 class="text-xl font-bold text-goimomi-dark">Dubai Dream Getaway</h3>
+                        <p class="text-sm text-gray-600 line-clamp-3">Experience the luxury and excitement of Dubai with our exclusive package. Includes flights, 5-star accommodation, and desert safari.</p>
+                        <p class="text-xs text-gray-500 pt-2">Valid until: 12/31/2024</p>
+                        <a href="#" class="bg-goimomi-gold text-white font-medium px-4 py-2 rounded-lg block text-center hover:bg-yellow-600 transition">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-shadow">
+                    <div class="relative h-64">
+                        <img src="{% static 'kerala Backwaters.png' %}" alt="Kerala houseboat on backwaters" class="w-full h-full object-cover" />
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">10% OFF</span>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <h3 class="text-xl font-bold text-goimomi-dark">Kerala Backwaters Bliss</h3>
+                        <p class="text-sm text-gray-600 line-clamp-3">Discover the serene beauty of Kerala's backwaters. Enjoy houseboat stays, Ayurvedic treatments, and lush landscapes.</p>
+                        <p class="text-xs text-gray-500 pt-2">Valid until: 11/15/2024</p>
+                        <a href="#" class="bg-goimomi-gold text-white font-medium px-4 py-2 rounded-lg block text-center hover:bg-yellow-600 transition">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg card-shadow">
+                    <div class="relative h-64">
+                        <img src="{% static 'venice.png' %}" alt="Traveler looking at Eiffel Tower and Colosseum" class="w-full h-full object-cover" />
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">20% OFF</span>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <h3 class="text-xl font-bold text-goimomi-dark">Europe Grand Tour Early Bird</h3>
+                        <p class="text-sm text-gray-600 line-clamp-3">Book your 2025 Europe Grand Tour now and get a special early bird discount. Visit Paris, Rome, and Switzerland.</p>
+                        <p class="text-xs text-gray-500 pt-2">Valid until: 10/31/2024</p>
+                        <a href="#" class="bg-goimomi-gold text-white font-medium px-4 py-2 rounded-lg block text-center hover:bg-yellow-600 transition">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-8xl mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl heading-font font-bold text-goimomi-dark">Why Choose Goimomi Holidays</h2>
+                <p class="text-lg text-gray-600 mt-2">Your trusted travel partner with years of expertise in creating memorable experiences</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-3">
+                    <span class="inline-block text-4xl">✈️</span>
+                    <h4 class="font-bold text-lg text-goimomi-dark">Personalized Holiday Plans</h4>
+                    <p class="text-sm text-gray-600">Tailored itineraries designed just for you</p>
+                </div>
+                <div class="space-y-3">
+                    <span class="inline-block text-4xl">💰</span>
+                    <h4 class="font-bold text-lg text-goimomi-dark">Best Price Guarantee</h4>
+                    <p class="text-sm text-gray-600">Competitive rates with no hidden costs</p>
+                </div>
+                <div class="space-y-3">
+                    <span class="inline-block text-4xl">⏱️</span>
+                    <h4 class="font-bold text-lg text-goimomi-dark">24/7 Customer Support</h4>
+                    <p class="text-sm text-gray-600">Round-the-clock assistance for your peace of mind</p>
+                </div>
+                <div class="space-y-3">
+                    <span class="inline-block text-4xl">🌍</span>
+                    <h4 class="font-bold text-lg text-goimomi-dark">Global DMC Partnerships</h4>
+                    <p class="text-sm text-gray-600">Worldwide network ensuring quality service</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-8xl mx-auto px-6 py-16 bg-goimomi-light">
+    <div class="text-center mb-10">
+        <h2 class="text-4xl heading-font font-bold text-goimomi-dark">Travel Gallery</h2>
+        <p class="text-lg text-gray-600 mt-2">Moments captured from our travelers' journeys</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <!-- Card 1 -->
+        <div class="h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition relative">
+            <img src="{% static 'airport.png' %}" 
+                 alt="Person holding passport at airport"
+                 class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            <div class="absolute bottom-0 left-0 bg-black/40 text-white p-2 w-full">
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition relative">
+            <img src="{% static 'USA.png' %}"
+                 alt="Maldives water villas at sunset"
+                 class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            <div class="absolute bottom-0 left-0 bg-black/40 text-white p-2 w-full">
+            </div>     
+        </div>
+
+        <!-- Card 3 -->
+        <div class="h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition relative">
+            <img src="{% static 'Turkey.png' %}"
+                 alt="Dubai skyline view"
+                 class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            <div class="absolute bottom-0 left-0 bg-black/40 text-white p-2 w-full">
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition relative">
+            <img src="{% static 'card4.png' %}"
+                 alt="Singapore Gardens by the Bay at night"
+                 class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            <div class="absolute bottom-0 left-0 bg-black/40 text-white p-2 w-full">
+            </div>     
+        </div>
+
+    </div>
+</section>
+
+
+        <section class="max-w-8xl mx-auto px-6 py-16">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl heading-font font-bold text-goimomi-dark">What Our Travelers Say</h2>
+                <p class="text-lg text-gray-600 mt-2">Real experiences from our valued customers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-goimomi-light p-6 rounded-xl shadow-lg border border-gray-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Priya Sharma" class="h-12 w-12 rounded-full object-cover" />
+                        <div>
+                            <p class="font-bold text-goimomi-dark">Priya Sharma</p>
+                            <span class="text-goimomi-gold">★★★★★</span>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic">"Goimomi Holidays made our Maldives honeymoon absolutely unforgettable! Every detail was perfectly handled, from flights to the luxurious resort. Highly recommend their international packages."</blockquote>
+                    <p class="text-sm text-gray-500 font-medium">Service: Maldives International Package</p>
+                </div>
+
+                <div class="bg-goimomi-light p-6 rounded-xl shadow-lg border border-gray-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1545996124-1b1d1f22f0d2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Rajesh Kumar" class="h-12 w-12 rounded-full object-cover" />
+                        <div>
+                            <p class="font-bold text-goimomi-dark">Rajesh Kumar</p>
+                            <span class="text-goimomi-gold">★★★★★</span>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic">"Our family trip to Kerala was seamless and full of wonderful memories, thanks to Goimomi Holidays. The personalized itinerary and excellent local guides were fantastic. Best domestic tour experience!"</blockquote>
+                    <p class="text-sm text-gray-500 font-medium">Service: Kerala Domestic Package</p>
+                </div>
+
+                <div class="bg-goimomi-light p-6 rounded-xl shadow-lg border border-gray-100 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Anjali Singh" class="h-12 w-12 rounded-full object-cover" />
+                        <div>
+                            <p class="font-bold text-goimomi-dark">Anjali Singh</p>
+                            <span class="text-goimomi-gold">★★★☆☆</span>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic">"I needed a visa for my Europe trip urgently, and Goimomi Holidays provided exceptional visa assistance. Fast, efficient, and stress-free service. They truly deliver on their promises."</blockquote>
+                    <p class="text-sm text-gray-500 font-medium">Service: Europe Visa Services</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-goimomi-dark text-white py-10">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h3 class="text-3xl font-bold heading-font">Ready to Plan Your Dream Getaway?</h3>
+                <p class="mt-3 text-lg text-gray-300">Contact our expert team today for a free consultation and customized itinerary.</p>
+                <a href="{% url 'contact' %}" class="mt-6 inline-block bg-goimomi-gold text-goimomi-dark font-semibold px-8 py-3 rounded-lg shadow-xl hover:bg-yellow-600 transition">Get In Touch Now</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-goimomi-dark text-white">
+        <div class="max-w-8xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8">
+            
+            <div class="space-y-4">
+                <h3 class="font-bold text-xl text-white">Goimomi Holidays</h3>
+                <p class="text-sm text-gray-400">Your trusted travel partner for creating unforgettable memories. We specialize in domestic and international travel packages, group tours, and personalized holiday experiences.</p>
+                <div class="flex space-x-4 text-gray-400 pt-2">
+                    <a href="https://www.facebook.com/goimomi/" aria-label="Facebook" class="hover:text-goimomi-gold"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3 8h-2V7h-3v3H8v2h2v3h3v-3h2v-2z"/></svg></a>
+                    <a href="https://www.instagram.com/goimomi/" aria-label="Instagram" class="hover:text-goimomi-gold"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C17.7 2 19 3.3 19 4.8v8.4c0 1.5-1.3 2.8-2.8 2.8H7.8C6.3 16 5 14.7 5 13.2V4.8C5 3.3 6.3 2 7.8 2zm-.2 2.7c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5zM12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="hover:text-goimomi-gold"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg></a>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg text-white">Quick Links</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-goimomi-gold">Flights</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Hotels</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Visa</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Domestic</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">International</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Hajj/Umrah</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Customised Holidays</a></li>
+                    <li><a href="{% url 'about' %}" class="hover:text-goimomi-gold">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg text-white">Our Services</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-goimomi-gold">Hotel Booking</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Flight Tickets</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Cab Booking</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Cruise Bookings</a></li>
+                    <li><a href="#" class="hover:text-goimomi-gold">Visa Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="font-bold text-lg text-white">Contact Info</h3>
+                <div class="space-y-3 text-sm text-gray-400">
+                    <div class="flex items-start gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 text-goimomi-gold flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <p>5, Crescent Paark, Ground Floor, Sulaiman Hazrath St, Opp. Jamal Mohamed Masjid, Tiruchirapalli, Tamil Nadu 620002, India</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-goimomi-gold flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.89 5.28 6.72 6.72l2.43-2.43c.2-.2.45-.27.71-.23.95.14 1.96.22 3 .22.55 0 1 .45 1 1v3c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3c.55 0 1 .45 1 1 0 1.04.08 2.05.22 3 .04.26-.03.51-.23.71l-2.43 2.43z"/></svg>
+                        <a href="tel:+916382220393" class="hover:text-goimomi-gold">+91 638 222 0393</a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-goimomi-gold flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:hello@goimomi.com" class="hover:text-goimomi-gold">hello@goimomi.com</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="max-w-8xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-gray-700">
+    
+            <p class="text-sm text-gray-400">&copy; 2025 Goimomi Holidays. All rights reserved.</p>
+            <div class="space-x-4">
+                <a href="{% url 'privacy' %}" class="text-sm text-gray-400 hover:text-goimomi-gold">Privacy Policy</a>
+                <a href="{% url 'terms' %}" class="text-sm text-gray-400 hover:text-goimomi-gold">Terms & Conditions</a>
+                <a href="{% url 'cancellation' %}" class="text-sm text-gray-400 hover:text-goimomi-gold">Cancellation Policy</a>
+            </div>
+</body>
+</html>
